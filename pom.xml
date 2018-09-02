@@ -1,0 +1,65 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>asciidoc-sample</groupId>
+  <artifactId>asciidoc-sample</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <maven.build.timestamp.format>yyyy-MM-dd HH</maven.build.timestamp.format>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.asciidoctor</groupId>
+        <artifactId>asciidoctor-maven-plugin</artifactId>
+        <version>1.5.6</version>
+        <executions>
+          <execution>
+            <id>output-html</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>process-asciidoc</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <sourceDirectory>src/docs/asciidoc</sourceDirectory>
+          <outputDirectory>target/docs/asciidoc</outputDirectory>
+          <backend>html</backend>
+          <preserveDirectories>true</preserveDirectories>
+          <attributes>
+            <project-version>${project.version}</project-version>
+            <backend>html</backend>
+            <noheader>true</noheader>
+            <nofooter>true</nofooter>
+            <lan>ja</lan>
+            <toc>left</toc>
+            <toclevels>2</toclevels>
+            <toc-title>目次</toc-title>
+            <preface-title>はじめに</preface-title>
+            <appendix-caption>付録</appendix-caption>
+            <caution-caption>注意</caution-caption>
+            <example-caption>例</example-caption>
+            <figure-caption>図</figure-caption>
+            <important-caption>重要</important-caption>
+            <last-update-label>最終更新</last-update-label>
+            <manname-title>名前</manname-title>
+            <note-caption>注記</note-caption>
+            <preface-title>まえがき</preface-title>
+            <table-caption>表</table-caption>
+            <tip-caption>ヒント</tip-caption>
+            <toc-title>目次</toc-title>
+            <untitled-label>無題</untitled-label>
+            <version-label>バージョン</version-label>
+            <warning-caption>警告</warning-caption>
+          </attributes>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
