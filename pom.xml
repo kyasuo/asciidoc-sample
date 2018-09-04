@@ -29,12 +29,21 @@
         </executions>
         <configuration>
           <sourceDirectory>src/docs/asciidoc</sourceDirectory>
-          <outputDirectory>target/docs/asciidoc</outputDirectory>
+          <outputDirectory>target/generated-docs/${project.artifactId}-${project.version}</outputDirectory>
+	  <resources>
+	    <resource>
+	      <directory>src/resources</directory>
+	    </resource>
+	  </resources>
           <backend>html</backend>
           <preserveDirectories>true</preserveDirectories>
           <attributes>
+	    <revnumber>${project.version}</revnumber>
+	    <revdate>${maven.build.timestamp}</revdate>
+	    <organization>${project.organization.name}</organization>
             <project-version>${project.version}</project-version>
             <backend>html</backend>
+	    <doctype>book</doctype>
             <noheader>true</noheader>
             <nofooter>true</nofooter>
             <lan>ja</lan>
@@ -57,6 +66,11 @@
             <untitled-label>無題</untitled-label>
             <version-label>バージョン</version-label>
             <warning-caption>警告</warning-caption>
+	    <sectnums>true</sectnums>
+	    <linkcss>true</linkcss>
+	    <copycss>true</copycss>
+	    <stylesdir>css</stylesdir>
+	    <stylesheet>readthedocs.css,font-awesome.min.css,coderay-asciidoctor.css,header-footer.css</stylesheet>
           </attributes>
         </configuration>
       </plugin>
